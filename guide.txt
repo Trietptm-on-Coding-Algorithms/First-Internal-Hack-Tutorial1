@@ -1,0 +1,23 @@
+First DLL
+
+2 part, second part = reclass
+
+
+Creating a thread
+ModuleBaseAddress = GetModuleHandle()
+Attaching a Console
+Use pointer to validate game is hackable
+Nop() Internal
+Patch() internal
+Typecasting addresses to pointers, changing their value
+Ejecting the DLL
+
+
+Hacks:
+
+
+why use DisableThreadLibraryCalls
+
+https://docs.microsoft.com/en-us/windows/desktop/api/libloaderapi/nf-libloaderapi-disablethreadlibrarycalls
+
+https://docs.microsoft.com/en-us/windows/desktop/api/libloaderapi/nf-libloaderapi-freelibraryandexitthread
