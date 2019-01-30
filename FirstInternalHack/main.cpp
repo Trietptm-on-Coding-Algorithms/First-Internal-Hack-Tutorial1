@@ -25,9 +25,7 @@ DWORD WINAPI HackThread(HMODULE hModule)
 	{
 		if (GetAsyncKeyState(VK_END) & 1)
 		{
-			fclose(f);
-			FreeConsole();
-			FreeLibraryAndExitThread(hModule, 0);
+			break;
 		}
 
 		if (GetAsyncKeyState(VK_NUMPAD1) & 1)
@@ -88,4 +86,9 @@ DWORD WINAPI HackThread(HMODULE hModule)
 		}
 		Sleep(5);
 	}
+
+	fclose(f);
+	FreeConsole();
+	FreeLibraryAndExitThread(hModule, 0);
+	return 0;
 }

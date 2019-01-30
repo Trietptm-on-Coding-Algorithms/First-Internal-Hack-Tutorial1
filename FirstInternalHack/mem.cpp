@@ -3,24 +3,12 @@
 
 //https://guidedhacking.com
 
-/*
 void mem::Patch(BYTE* dst, BYTE* src, unsigned int size)
 {
 	DWORD oldprotect;
 	VirtualProtect(dst, size, PAGE_EXECUTE_READWRITE, &oldprotect);
-	memcpy(dst, src, size);
-	VirtualProtect(dst, size, oldprotect, &oldprotect);
-}
-*/
 
-void mem::Patch(BYTE* dst, BYTE* src, unsigned int size)
-{
-	DWORD oldprotect;
-	VirtualProtect(dst, size, PAGE_EXECUTE_READWRITE, &oldprotect);
-	for (unsigned int i = 0; i < size; i++)
-	{
-		dst[i] = src[i];
-	}
+	memcpy(dst, src, size);
 	VirtualProtect(dst, size, oldprotect, &oldprotect);
 }
 
@@ -32,24 +20,11 @@ void mem::PatchEx(BYTE* dst, BYTE* src, unsigned int size, HANDLE hProcess)
 	VirtualProtectEx(hProcess, dst, size, oldprotect, &oldprotect);
 }
 
-/*
 void mem::Nop(BYTE* dst, unsigned int size)
 {
 	DWORD oldprotect;
 	VirtualProtect(dst, size, PAGE_EXECUTE_READWRITE, &oldprotect);
 	memset(dst, 0x90, size);
-	VirtualProtect(dst, size, oldprotect, &oldprotect);
-}
-*/
-
-void mem::Nop(BYTE* dst, unsigned int size)
-{
-	DWORD oldprotect;
-	VirtualProtect(dst, size, PAGE_EXECUTE_READWRITE, &oldprotect);
-	for (unsigned int i = 0; i < size; i++)
-	{
-		dst[i] = 0x90;
-	}
 	VirtualProtect(dst, size, oldprotect, &oldprotect);
 }
 
